@@ -3,7 +3,7 @@ import dbConnect from '@/lib/dbConnect';
 import Course from '@/model/Course';
 
 export async function GET(req: NextRequest, { params }: { params: { courseId: string } }) {
-  const { courseId } = params;
+  const { courseId } = await params;
 
   try {
     await dbConnect();
