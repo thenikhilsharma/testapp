@@ -3,7 +3,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import '././course.css';
+import '../course.css'
 
 const Subject = () => {
 
