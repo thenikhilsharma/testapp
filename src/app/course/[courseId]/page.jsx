@@ -13,7 +13,7 @@ const Subject = () => {
 
   useEffect(() => {
     async function getCourseById(id) {
-      const data = await fetch(`http://localhost:3000/api/courses/${id}`);
+      const data = await fetch(`/api/courses/${id}`);
       setSubject(await data.json());
     }
     getCourseById(pathId);

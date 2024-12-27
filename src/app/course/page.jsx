@@ -10,7 +10,7 @@ const CourseHome = () => {
 
   useEffect(() => {
     async function fetchCourses() {
-      const data = await fetch("http://localhost:3000/api/courses");
+      const data = await fetch("/api/courses");
       setCourses(await data.json());
     }
     fetchCourses();
