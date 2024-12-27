@@ -3,10 +3,12 @@
 import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
+import "./course.css";
+import CourseCard from "../../components/CourseCard";
 
 const CourseHome = () => {
   const [courses, setCourses] = useState([]);
-  console.log("courses: ", courses);
+  // console.log("courses: ", courses);
 
   useEffect(() => {
     async function fetchCourses() {
@@ -17,18 +19,23 @@ const CourseHome = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-white size-3 m-3">Users</h1>
+    <>
+      <div className="course-title flex justify-center mt-5">
+        <h1>SEM 4 - Courses</h1>
+      </div>
       {courses &&
         courses.courses &&
         courses.courses.map((course) => (
-            <Link href={`/course/${course.courseId}`} key={course.courseId}>
-              <div className="text-white">
-                {course.courseName}
-              </div>
-            </Link>
+          <Link href={`/course/${course.courseId}`} key={course.courseId}>
+            <div className="text-white">
+              <CourseCard
+                courseName={course.courseName}
+                Attendance={course.Attendance}
+              />
+            </div>
+          </Link>
         ))}
-    </div>
+    </>
   );
 };
 

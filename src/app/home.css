@@ -1,0 +1,10 @@
+.login {
+  font-family: 'Jaro';
+  font-size: large;
+  margin-top: 5rem;
+  background-color: #165863;
+  padding: 2rem;
+  border-radius: 30px;
+  color: white;
+  font-weight: 400;
+}
