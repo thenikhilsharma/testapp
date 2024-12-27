@@ -10,7 +10,7 @@ const CourseHome = () => {
 
   useEffect(() => {
     async function fetchCourses() {
-      const data = await fetch("https://dummyjson.com/users");
+      const data = await fetch("http://localhost:3000/api/courses");
       setCourses(await data.json());
     }
     fetchCourses();
@@ -20,11 +20,11 @@ const CourseHome = () => {
     <div>
       <h1 className="text-white size-3 m-3">Users</h1>
       {courses &&
-        courses.users &&
-        courses.users.map((course) => (
-            <Link href={`/course/${course.id}`} key={course.id}>
+        courses.courses &&
+        courses.courses.map((course) => (
+            <Link href={`/course/${course.courseId}`} key={course.courseId}>
               <div className="text-white">
-                {course.firstName}
+                {course.courseName}
               </div>
             </Link>
         ))}

@@ -7,7 +7,7 @@ export async function GET(req: NextRequest, { params }: { params: { courseId: st
 
   try {
     await dbConnect();
-    const course = await Course.findById(courseId);
+    const course = await Course.find({courseId: courseId});
 
     if (!course) {
       return NextResponse.json({ error: 'Course not found' }, { status: 404 });
