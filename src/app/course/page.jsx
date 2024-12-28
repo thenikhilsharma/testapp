@@ -35,6 +35,13 @@ const CourseHome = () => {
             </div>
           </Link>
         ))}
+      <div className="flex item-center justify-center">
+        <Link href="/addCourse">
+          <div className="addCoursebtn mt-4 p-5 bg-cyan-900">
+            <p>Add Course</p>
+          </div>
+        </Link>
+      </div>
     </>
   );
 };
