@@ -3,7 +3,7 @@ import Course from "@/model/Course";
 
 export async function GET(
   req: Request,
-  { params }: { params: { courseId: string } }
+  { params }: { params: Promise<{ courseId: string }> }
 ) {
   try {
     await dbConnect();
