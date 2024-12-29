@@ -1,17 +1,15 @@
-import React from 'react'
-import './home.css'
 import Link from 'next/link'
+import React from 'react'
 
-const Home = () => {
+const AIMS = () => {
   return (
-    <div className='flex item-center justify-center'>
-      <Link href="/course">
-        <div className='login'>
-          LogIn
-        </div>
+    <div>
+      <h1 className="text-white">THIS IS AIMS HOME PAGE</h1>
+      <Link href={'/signin'}>
+        <p className='text-white'>Sign In</p>
       </Link>
     </div>
   )
 }
 
-export default Home
+export default AIMS
