@@ -4,4 +4,7 @@
 
 body {
   background-color: #191818;
+  font-family: 'Jaro', serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }

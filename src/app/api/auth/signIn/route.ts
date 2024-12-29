@@ -4,15 +4,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Users from '@/model/Users';
 
-// Mock user data
-// const users = [
-//   {
-//     id: 1,
-//     username: 'testuser',
-//     password: '$2b$10$EIX/8Y5O8Q5z5Y5O8Q5z5u5O8Q5z5Y5O8Q5z5Y5O8Q5z5Y5O8Q5z5Y' // hashed password for 'password123'
-//   }
-// ];
-
 export async function POST(req: Request) {
   const { username, password } = await req.json();
   await dbConnect();
@@ -30,7 +21,7 @@ export async function POST(req: Request) {
   }
 
   // Generate JWT
-  const token = jwt.sign({ id: user.id, username: user.username }, 'jwtsecret02' , { expiresIn: '1h' });
+  const token = jwt.sign({ id: user.id, username: user.username }, 'jwtsecret02' , { expiresIn: '10m' });
 
   return NextResponse.json({ token }, {status: 200});
 };
