@@ -1,10 +1,45 @@
-.login {
-  font-family: 'Jaro';
-  font-size: large;
+/* styles/HomePage.css */
+.home-page {
   margin-top: 5rem;
-  background-color: #165863;
-  padding: 2rem;
-  border-radius: 30px;
+  text-align: center;
+  padding: 20px;
+}
+
+.content {
+  color: rgb(3, 107, 107);
+}
+
+.content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.content ul li {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.cta-buttons {
+  margin-top: 30px;
+}
+
+.cta-buttons .button {
+  margin: 10px;
+  text-decoration: none;
+}
+
+/* styles/Button.css */
+.button {
+  background-color: #0c2b30;
   color: white;
-  font-weight: 400;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #2c4bb1;
 }

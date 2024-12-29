@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import './signin.css';
 
 export default function SignIn() {
   const [username, setEmail] = useState('');
@@ -38,8 +39,11 @@ export default function SignIn() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '400px', margin: '0 auto' }}>
-      <h1>Sign In</h1>
+    <div className='loginContainer'>
+    <div className='loginDiv'>
+      <div>
+      <h1 className='signInLabel'>Sign In</h1>
+      </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <input
@@ -49,7 +53,7 @@ export default function SignIn() {
           onChange={(e) => setEmail(e.target.value)}
           required
           style={{ padding: '10px', fontSize: '16px' }}
-        />
+          />
         <input
           type="password"
           placeholder="Password"
@@ -57,11 +61,12 @@ export default function SignIn() {
           onChange={(e) => setPassword(e.target.value)}
           required
           style={{ padding: '10px', fontSize: '16px' }}
-        />
-        <button type="submit" style={{ padding: '10px', fontSize: '16px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '5px' }}>
+          />
+        <button type="submit" style={{ padding: '10px', fontSize: '16px', backgroundColor: '#237D8B', color: 'white', border: 'none', borderRadius: '5px' }}>
           Sign In
         </button>
       </form>
     </div>
+          </div>
   );
 }

@@ -3,6 +3,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import './dashboard.css';
 
 export default function Dashboard() {
   interface User {
@@ -17,7 +19,7 @@ export default function Dashboard() {
   useEffect(() => {
     const verifyToken = async () => {
       const token = localStorage.getItem('token');
-      console.log('Token:', token);
+      // console.log('Token:', token);
 
       if (!token) {
         router.push('/signin'); // Redirect to sign-in if no token is found
@@ -33,7 +35,7 @@ export default function Dashboard() {
           },
         });
 
-        console.log('Response:', response);
+        // console.log('Response:', response);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -51,6 +53,10 @@ export default function Dashboard() {
     verifyToken();
   }, [router]);
 
+  if (user?.username && user.username.split('_')[0] === "admin") {
+    router.push('/admin');
+  };
+
   if (error) {
     return <p>{error}</p>;
   }
@@ -60,9 +66,12 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
+    <div className='dashboardContainer'>
       <h1>Welcome, {user.username}!</h1>
-      <p>This is a protected page.</p>
+      <p>GET Track of your Academic Progress</p>
+      <Link href='/course'>
+        <p className='courseBtn'>Check Courses</p>
+      </Link>
     </div>
   );
 }
