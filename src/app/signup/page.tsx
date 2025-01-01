@@ -4,6 +4,7 @@
 import { useState } from "react";
 import "./signup.css";
 import SignUpSuccess from "@/components/signUpSuccess";
+import Loading from "@/components/Loading";
 
 export default function SignIn() {
   const [username, setEmail] = useState("");
@@ -11,6 +12,7 @@ export default function SignIn() {
   const [error, setError] = useState("");
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [validationErrors, setValidationErrors] = useState({
     courseId: "",
     courseName: "",
@@ -30,6 +32,7 @@ export default function SignIn() {
     });
 
     try {
+      setIsLoading(true);
       const response = await fetch("/api/auth/signUp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -54,6 +57,8 @@ export default function SignIn() {
     } catch (err) {
       console.error(err);
       setError("Sign-Up failed. Please check your credentials and try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -61,6 +66,8 @@ export default function SignIn() {
     <div>
       {isSubmitted ? (
         <SignUpSuccess />
+      ) : isLoading ? (
+        <Loading />
       ) : (
         <div className="signupContainer">
           <div className="signupDiv">
