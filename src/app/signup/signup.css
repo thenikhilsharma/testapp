@@ -1,0 +1,30 @@
+.signupContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.signupDiv {
+    padding: 20px;
+    max-width: 400px;
+    min-width: 20rem;
+    margin: 1rem auto;
+    background-color: #0c2b30;
+    border-radius: 20px;
+}
+
+.signupLabel {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.signupDiv input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #b7b5b5;
+    box-shadow: 2px 2px 2px #000000;
+}
