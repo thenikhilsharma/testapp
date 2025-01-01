@@ -4,6 +4,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./courseSpecific.css";
+import Loading from "../../../components/Loading";
 
 const Subject = () => {
 
@@ -21,7 +22,7 @@ const Subject = () => {
   }, [pathId]);
 
   if (!subject){
-    return <h1>Loading...</h1>
+    return < Loading />
   }
 
   return (

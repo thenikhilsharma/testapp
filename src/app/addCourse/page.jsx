@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Success from "@/components/Success";
+import './styles.css';
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -81,14 +82,14 @@ export default function RegistrationForm() {
           <div className="m-[auto] max-w-xs mt-10">
             <form
               onSubmit={handleSubmit}
-              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+              className="form shadow-md rounded px-8 pt-6 pb-8 mb-4"
             >
               {/* Course ID */}
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
+                <label className="text-white text-lg mb-2">
                   Course ID:
                   <input
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.courseId ? "border-red-500" : ""
                     }`}
                     type="text"
@@ -108,10 +109,10 @@ export default function RegistrationForm() {
 
               {/* Course Name */}
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
+                <label className="text-white text-lg mb-2">
                   Course Name:
                   <input
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.courseName ? "border-red-500" : ""
                     }`}
                     type="text"
@@ -131,10 +132,10 @@ export default function RegistrationForm() {
 
               {/* Attendance */}
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
+                <label className="text-white text-lg mb-2">
                   Attendance:
                   <input
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.Attendance ? "border-red-500" : ""
                     }`}
                     type="text"
@@ -153,7 +154,7 @@ export default function RegistrationForm() {
               </div>
 
               <button
-                className={`shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded ${
+                className={`shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline text-lg mt-2 focus:outline-none text-white py-2 px-4 rounded ${
                   isLoading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 type="submit"
@@ -184,7 +185,7 @@ export default function RegistrationForm() {
                     Processing...
                   </>
                 ) : (
-                  "Register"
+                  "Add Course"
                 )}
               </button>
             </form>
