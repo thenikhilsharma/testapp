@@ -20,24 +20,28 @@ const CourseHome = () => {
 
   return (
     <>
-      <div className="course-title flex justify-center mt-5">
+      <div className="course-title flex justify-center mt-8">
         <h1>SEM 4 - Courses</h1>
       </div>
-      {courses &&
-        courses.courses &&
-        courses.courses.map((course) => (
-          <Link href={`/course/${course.courseId}`} key={course.courseId}>
-            <div className="text-white">
-              <CourseCard
-                courseName={course.courseName}
-                Attendance={course.Attendance}
-              />
-            </div>
-          </Link>
-        ))}
+      <div className="courses-container">
+        <div className="courses-grid">
+          {courses &&
+            courses.courses &&
+            courses.courses.map((course) => (
+              <Link href={`/course/${course.courseId}`} key={course.courseId}>
+                <div className="text-white course">
+                  <CourseCard
+                    courseName={course.courseName.slice(0, 3)}
+                    Attendance={course.Attendance}
+                  />
+                </div>
+              </Link>
+            ))}
+        </div>
+      </div>
       <div className="flex item-center justify-center">
         <Link href="/addCourse">
-          <div className="addCoursebtn mt-4 p-5 bg-cyan-900">
+          <div className="addCoursebtn mt-6 p-5 bg-cyan-900 rounded-full cursor-pointer">
             <p>Add Course</p>
           </div>
         </Link>
