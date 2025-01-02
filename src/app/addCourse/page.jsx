@@ -8,7 +8,7 @@ export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     courseId: "",
     courseName: "",
-    Attendance: "",
+    presents: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,8 @@ export default function RegistrationForm() {
   const [validationErrors, setValidationErrors] = useState({
     courseId: "",
     courseName: "",
-    Attendance: "",
+    presents: "",
+    totalClasses: "",
   });
   
   const handleChange = (e) => {
@@ -36,7 +37,8 @@ export default function RegistrationForm() {
     setValidationErrors({
     courseId: "",
     courseName: "",
-    Attendance: "",
+    presents: "",
+    totalClasses: "",
     });
 
     console.log("Submitting form data:", formData); // Debugging step
@@ -130,25 +132,48 @@ export default function RegistrationForm() {
                 )}
               </div>
 
-              {/* Attendance */}
+              {/* Presents */}
               <div className="mb-4">
                 <label className="text-white text-lg mb-2">
-                  Attendance:
+                  Presents:
                   <input
                     className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
-                      validationErrors.Attendance ? "border-red-500" : ""
+                      validationErrors.presents ? "border-red-500" : ""
                     }`}
                     type="text"
-                    name="Attendance"
-                    placeholder="Attendance"
-                    value={formData.Attendance}
+                    name="presents"
+                    placeholder="Presents"
+                    value={formData.presents}
                     onChange={handleChange}
                     required
                   />
                 </label>
-                {validationErrors.Attendance && (
+                {validationErrors.presents && (
                   <p className="text-red-500 text-xs italic">
-                    {validationErrors.Attendance}
+                    {validationErrors.presents}
+                  </p>
+                )}
+              </div>
+
+              {/* Total Classes */}
+              <div className="mb-4">
+                <label className="text-white text-lg mb-2">
+                  Total Classes:
+                  <input
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
+                      validationErrors.totalClasses ? "border-red-500" : ""
+                    }`}
+                    type="text"
+                    name="totalClasses"
+                    placeholder="Total Classes"
+                    value={formData.totalClasses}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                {validationErrors.totalClasses && (
+                  <p className="text-red-500 text-xs italic">
+                    {validationErrors.totalClasses}
                   </p>
                 )}
               </div>
@@ -179,7 +204,7 @@ export default function RegistrationForm() {
                       <path
                         className="opacity-75"
                         fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm6 9a8 8 0 010-16V0h4a8 8 0 000 16h-4v-4zm10-"
+                        // d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm6 9a8 8 0 010-16V0h4a8 8 0 000 16h-4v-4zm10-"
                       />
                     </svg>
                     Processing...

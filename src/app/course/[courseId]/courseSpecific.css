@@ -76,8 +76,21 @@ body{
     margin-bottom: 0.5rem;
 }
 
+.score-content{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .course-scores{
     margin-left: 1.5rem;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+}
+
+.total-score{
+    font-size: 1.7rem;
+    margin-right: 1rem;
 }
