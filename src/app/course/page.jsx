@@ -11,12 +11,11 @@ const CourseHome = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   // console.log("courses: ", courses);
-
+  
   useEffect(() => {
     async function fetchCourses() {
       try {
         setLoading(true);
-        console.log(loading);
         const data = await fetch("/api/courses");
         setCourses(await data.json());
       } catch (err) {
@@ -48,8 +47,8 @@ const CourseHome = () => {
                   >
                     <div className="text-white course">
                       <CourseCard
-                        courseName={course.courseName.slice(0, 3)}
-                        Attendance={course.Attendance}
+                        courseName={course.courseId}
+                        Attendance={Math.floor(course.presents / course.totalClasses * 100)}
                       />
                     </div>
                   </Link>
