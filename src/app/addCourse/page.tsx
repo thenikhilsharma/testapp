@@ -1,14 +1,25 @@
 "use client";
 
-import { useState } from "react";
-import Success from "@/components/Success";
+import { useState, useEffect } from "react";
 import './styles.css';
+import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function RegistrationForm() {
+
+// username fetching from token
+  interface User {
+      username: string;
+      // add other properties if needed
+  }
+  const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState('');
+  const router = useRouter();
   const [formData, setFormData] = useState({
     courseId: "",
     courseName: "",
     presents: "",
+    totalClasses: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +31,58 @@ export default function RegistrationForm() {
     presents: "",
     totalClasses: "",
   });
+
+  useEffect(() => {
+    const verifyToken = async () => {
+      const token = localStorage.getItem('token');
+      // console.log('Token:', token);
+
+      if (!token) {
+        router.push('/signin'); // Redirect to sign-in if no token is found
+        console.log('No token found');
+      }
+
+      try {
+        const response = await fetch('/api/auth/verifyToken', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        // console.log('Response:', response);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setUser(data.user);
+      } catch (err) {
+        console.error(err);
+        setError('Token verification failed.');
+        router.push('/signin'); // Redirect to sign-in if token verification fails
+      }
+    };
+
+    verifyToken();
+  }, [router]);
+
+  if (user?.username && user.username.split('_')[0] === "admin") {
+    router.push('/admin');
+  };
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  if (!user) {
+    return <p>Loading...</p>;
+  }
+// username fetching done
+
+// Form submission
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +104,15 @@ export default function RegistrationForm() {
     totalClasses: "",
     });
 
-    console.log("Submitting form data:", formData); // Debugging step
+    // console.log("Submitting form data:", formData); // Debugging step
+
+    // username modification + courseId modification
+    const username = await user.username.split('_')[0];
+    const modifiedCourseId = `${username}_${formData.courseId}`;
+    const modifiedFormData = {
+      ...formData,
+      courseId: modifiedCourseId,
+    };
 
     try {
       const response = await fetch("/api/addCourse", {
@@ -49,7 +120,7 @@ export default function RegistrationForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(modifiedFormData),
       });
 
       if (response.status === 201) {
@@ -78,7 +149,16 @@ export default function RegistrationForm() {
   return (
     <div>
       {isSubmitted ? (
-        <Success />
+        <div className='flex flex-col items-center justify-center mt-60'>
+      <h1 className="text-white">Course is Successfully Added</h1>
+      <div>
+        <Link href={`/userCourses/${user.username}`}>
+          <div className="text-white bg-teal-800 p-3 m-2 rounded-md cursor-pointer w-40 text-center">
+            Check Courses
+          </div>
+        </Link>
+      </div>
+    </div>
       ) : (
         <>
           <div className="m-[auto] max-w-xs mt-10">
@@ -91,7 +171,7 @@ export default function RegistrationForm() {
                 <label className="text-white text-lg mb-2">
                   Course ID:
                   <input
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.courseId ? "border-red-500" : ""
                     }`}
                     type="text"
@@ -114,7 +194,7 @@ export default function RegistrationForm() {
                 <label className="text-white text-lg mb-2">
                   Course Name:
                   <input
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.courseName ? "border-red-500" : ""
                     }`}
                     type="text"
@@ -137,7 +217,7 @@ export default function RegistrationForm() {
                 <label className="text-white text-lg mb-2">
                   Presents:
                   <input
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.presents ? "border-red-500" : ""
                     }`}
                     type="text"
@@ -160,7 +240,7 @@ export default function RegistrationForm() {
                 <label className="text-white text-lg mb-2">
                   Total Classes:
                   <input
-                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline ${
+                    className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.totalClasses ? "border-red-500" : ""
                     }`}
                     type="text"
