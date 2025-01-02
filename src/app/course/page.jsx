@@ -17,6 +17,7 @@ const CourseHome = () => {
       try {
         setLoading(true);
         const data = await fetch("/api/courses");
+        // console.log("data: ", data);
         setCourses(await data.json());
       } catch (err) {
         console.error("Error fetching courses: ", err);

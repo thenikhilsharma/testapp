@@ -1,0 +1,50 @@
+body{
+    color: aliceblue;
+    font-family: 'Jaro', serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.course-title{
+font-size: 1.5rem;
+}
+
+.courses-container {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Define 3 columns for symmetry */
+  gap: 15px;
+  width: fit-content;
+}
+
+.course {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(10, 109, 118);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.course:hover {
+  transform: scale(1.1);
+}
+
+/* Center the second row */
+.courses-grid > :nth-child(3),
+.courses-grid > :nth-child(4) {
+  grid-column: span 1; /* Each takes up 1 column */
+  justify-self: center; /* Center-align within the grid */
+}

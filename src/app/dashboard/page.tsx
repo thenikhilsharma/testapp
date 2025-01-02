@@ -69,7 +69,7 @@ export default function Dashboard() {
     <div className='dashboardContainer'>
       <h1>Welcome, {user.username}!</h1>
       <p>GET Track of your Academic Progress</p>
-      <Link href='/course'>
+      <Link href={`/userCourses/${user.username}`}>
         <p className='courseBtn'>Check Courses</p>
       </Link>
     </div>
