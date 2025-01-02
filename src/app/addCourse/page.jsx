@@ -8,10 +8,6 @@ import { useRouter } from "next/navigation";
 export default function RegistrationForm() {
 
 // username fetching from token
-  interface User {
-      username: string;
-      // add other properties if needed
-  }
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState('');
   const router = useRouter();
