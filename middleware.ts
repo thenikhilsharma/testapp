@@ -9,11 +9,11 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
 
   // Extract token from Authorization header
-  const authHeader = request.headers.get('Authorization');
+  const authHeader = request.headers.get('authorization');
   const token = authHeader?.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
 
   // Redirect to sign-in if the user is trying to access /course or /dashboard without a token
-  if (!token && (url.pathname.startsWith('/course') || url.pathname.startsWith('/dashboard'))) {
+  if (!token && (url.pathname.startsWith('/course') || url.pathname.startsWith('/dashboard') || url.pathname.startsWith('/userCourses'))) {
     return NextResponse.redirect(new URL('/sign-in', request.url));
   }
 
@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
       url.pathname.startsWith('/verify') ||
       url.pathname === '/')
   ) {
-    return NextResponse.redirect(new URL('/course', request.url));
+    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
   // Allow the request to proceed

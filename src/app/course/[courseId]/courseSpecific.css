@@ -94,3 +94,74 @@ body{
     font-size: 1.7rem;
     margin-right: 1rem;
 }
+
+.presents{
+    display: flex;
+    align-items: center;
+}
+
+.presents-btn{
+    display: flex;
+    gap: 2rem;
+}
+
+.presents .mark{
+    background-color: green;
+    border-radius: 5px;
+    /* padding: 0, 5px; */
+}
+
+.presents button{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.presents .unmark{
+    background-color: red;
+    border-radius: 5px;
+}
+
+.absents{
+    display: flex;
+    align-items: center;
+}
+
+.absents h1{
+    margin-right: 1.9rem;
+}
+
+.absents-btn{
+    display: flex;
+    gap: 2rem;
+}
+
+.absents .mark{
+    background-color: green;
+    /* padding: 0, 5px; */
+    border-radius: 5px;
+}
+
+.absents button{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.absents .unmark{
+    background-color: red;
+    border-radius: 5px;
+}
+
+.submit button{
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    background-color: #165863;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
