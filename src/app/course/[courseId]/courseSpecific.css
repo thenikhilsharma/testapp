@@ -16,6 +16,17 @@ body{
 
 .course-title{
     font-size: 1.75rem;
+    display: flex;
+}
+
+.course-title-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hidden-back{
+    visibility: hidden;
 }
 
 .attendance-box{
