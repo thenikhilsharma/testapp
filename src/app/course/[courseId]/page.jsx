@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./courseSpecific.css";
 import Loading from "../../../components/Loading";
-import Router from "next/navigation";
+import { useRouter } from "next/navigation";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const Subject = () => {
   const [subject, setSubject] = useState();
@@ -15,7 +16,7 @@ const Subject = () => {
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
   const pathId = pathname.split("/").pop();
-  const router = Router;
+  const router = useRouter();
 
   useEffect(() => {
     // to fetch GET data from database
@@ -142,10 +143,22 @@ const Subject = () => {
     }
   };
 
+  const handleBack = async() => {
+    router.push(`/userCourses/${pathId.split('_')[0]}`);
+  }
+
   return (
     <div className="dashboard-container">
       <div className="course-title">
-        <h1>{subject[0].courseName}</h1>
+        <button onClick={() => {handleBack()}}>
+          <KeyboardBackspaceIcon />
+        </button>
+        <div className="course-title-title">
+        <h1 className="ml-5 mr-5">{subject[0].courseName}</h1>
+        </div>
+        <button className='hidden-back' onClick={() => {handleBack()}}>
+          <KeyboardBackspaceIcon />
+        </button>
       </div>
       <div className="attendance-box">
         <div className="attendance-heading">
