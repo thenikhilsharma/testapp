@@ -169,14 +169,14 @@ export default function RegistrationForm() {
               {/* Course ID */}
               <div className="mb-4">
                 <label className="text-white text-lg mb-2">
-                  Course ID:
+                  Course ID (3 character):
                   <input
                     className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.courseId ? "border-red-500" : ""
                     }`}
                     type="text"
                     name="courseId"
-                    placeholder="Course Name"
+                    placeholder="(e.g. PHY for Physics)"
                     value={formData.courseId}
                     onChange={handleChange}
                     required
@@ -199,7 +199,7 @@ export default function RegistrationForm() {
                     }`}
                     type="text"
                     name="courseName"
-                    placeholder="Course Name"
+                    placeholder="(e.g. Physics)"
                     value={formData.courseName}
                     onChange={handleChange}
                     required
@@ -215,14 +215,14 @@ export default function RegistrationForm() {
               {/* Presents */}
               <div className="mb-4">
                 <label className="text-white text-lg mb-2">
-                  Presents:
+                  Presents (till now):
                   <input
                     className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.presents ? "border-red-500" : ""
                     }`}
                     type="text"
                     name="presents"
-                    placeholder="Presents"
+                    placeholder="'0' if no class attended/scheduled till now"
                     value={formData.presents}
                     onChange={handleChange}
                     required
@@ -238,14 +238,14 @@ export default function RegistrationForm() {
               {/* Total Classes */}
               <div className="mb-4">
                 <label className="text-white text-lg mb-2">
-                  Total Classes:
+                  Total Classes (till now):
                   <input
                     className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
                       validationErrors.totalClasses ? "border-red-500" : ""
                     }`}
                     type="text"
                     name="totalClasses"
-                    placeholder="Total Classes"
+                    placeholder="'0' if no class scheduled"
                     value={formData.totalClasses}
                     onChange={handleChange}
                     required

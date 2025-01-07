@@ -16,7 +16,7 @@ export async function DELETE(
       return console.error("Course not found");
     }
 
-    await course.remove();
+    await course.deleteOne({ courseId });
 
     return Response.json({ message: "Course deleted successfully" });
   } catch (error) {

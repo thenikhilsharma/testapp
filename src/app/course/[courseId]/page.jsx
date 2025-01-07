@@ -94,7 +94,10 @@ const Subject = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        if (confirm("Do you want to delete this course:")){
+          const data = await response.json();
+          router.push(`/userCourses/${pathId.split('_')[0]}`)
+        }
       } else {
         const errorData = await response.json();
       }
