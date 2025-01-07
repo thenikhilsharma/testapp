@@ -21,7 +21,7 @@ export async function POST(req: Request) {
   }
 
   // Generate JWT
-  const token = jwt.sign({ id: user.id, username: user.username }, 'jwtsecret02' , { expiresIn: '10m' });
+  const token = jwt.sign({ id: user.id, username: user.username }, 'jwtsecret02' , { expiresIn: '1h' });
 
   return NextResponse.json({ token }, {status: 200});
 };
