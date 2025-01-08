@@ -252,11 +252,11 @@ const Subject = () => {
             <p>end-sem: 17/50</p>
           </div>
           <div className="total-score">
-            <p>34/100</p>
+            <p className="text-red-600">34/100</p>
           </div>
         </div>
       </div>
-      <div className="deleteCourse">
+      <div className="deleteCourse mb-3">
         <button className="deleteCoursebtn" onClick={handleDelete}>
           Delete Course
         </button>
