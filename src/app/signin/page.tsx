@@ -40,10 +40,15 @@ export default function SignIn() {
     } catch (err) {
       console.error(err);
       setError("Sign-in failed. Please check your credentials and try again.");
+      alert("Sign-in failed. Please check your credentials and try again.")
     } finally {
       setIsLoading(false);
     }
   };
+
+  const handleSignUp = async () => {
+    router.push('/signup')
+  }
 
   return (
     <div>
@@ -61,14 +66,16 @@ export default function SignIn() {
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
               <input
+                className="text-gray-700"
                 type="text"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 style={{ padding: "10px", fontSize: "16px" }}
-              />
+                />
               <input
+                className="text-gray-700"
                 type="password"
                 placeholder="Password"
                 value={password}
@@ -90,6 +97,23 @@ export default function SignIn() {
                 Sign In
               </button>
             </form>
+            <div className="flex items-center justify-end gap-5">
+              <h1 className="text-white mt-3">New User?? Register Here...</h1>
+              <button
+              className="mt-3"
+              onClick={handleSignUp}
+              style={{
+                padding: "10px",
+                fontSize: "16px",
+                  backgroundColor: "#237D8B",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                }}
+              >
+                Sign Up
+              </button>
+                  </div>
           </div>
         </div>
       )}
