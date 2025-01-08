@@ -94,7 +94,10 @@ const Subject = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        if (confirm("Do you want to delete this course:")){
+          const data = await response.json();
+          router.push(`/userCourses/${pathId.split('_')[0]}`)
+        }
       } else {
         const errorData = await response.json();
       }
@@ -160,12 +163,12 @@ const Subject = () => {
           <KeyboardBackspaceIcon />
         </button>
       </div>
-      <div className="attendance-box">
-        <div className="attendance-heading">
+      <div className="attendance-box shadow">
+        <div className="attendance-heading mt-1">
           <h2>attendance</h2>
         </div>
         <div className="attendance-content">
-          <div className="attendance-progress">
+          <div className="attendance-progress shadow">
             <p>
               {Math.floor(
                 (subject[0].presents / subject[0].totalClasses) * 100
@@ -180,7 +183,7 @@ const Subject = () => {
           </div>
         </div>
       </div>
-      <div className="miss-box">
+      <div className="miss-box shadow">
         <div className="miss-heading">
           {/* <h2>lectures left: 17</h2> */}
           <h2 style={{ color: attendance ? attendance.color : "white" }}>
@@ -189,7 +192,7 @@ const Subject = () => {
           </h2>
         </div>
       </div>
-      <div className="update-box miss-box">
+      <div className="update-box miss-box shadow">
         {/*===============================================*/}
 
           <div className="text-lg">
@@ -237,7 +240,7 @@ const Subject = () => {
 
           {/*===============================================*/}
       </div>
-      <div className="score-box">
+      <div className="score-box shadow">
         <div className="score-heading">
           <h2>scores (coming soon)</h2>
         </div>
@@ -249,11 +252,11 @@ const Subject = () => {
             <p>end-sem: 17/50</p>
           </div>
           <div className="total-score">
-            <p>34/100</p>
+            <p className="text-red-600">34/100</p>
           </div>
         </div>
       </div>
-      <div className="deleteCourse">
+      <div className="deleteCourse mb-3">
         <button className="deleteCoursebtn" onClick={handleDelete}>
           Delete Course
         </button>

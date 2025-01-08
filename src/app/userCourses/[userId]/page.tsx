@@ -96,7 +96,7 @@ const CourseHome = () => {
       ) : (
         <div>
           <div className="course-title flex justify-center mt-8">
-            <h1>SEM 4 - Courses</h1>
+            <h1>All Courses</h1>
           </div>
           <div className="courses-container">
             <div className="courses-grid">
@@ -106,7 +106,7 @@ const CourseHome = () => {
                   key={course.courseId}
                   passHref
                 >
-                  <div className="text-white course">
+                  <div className="text-white course shadow">
                     <CourseCard
                       courseName={course.courseId.split("_")[1]}
                       Attendance={Math.floor(
@@ -120,7 +120,7 @@ const CourseHome = () => {
           </div>
           <div className="flex item-center justify-center">
             <Link href="/addCourse" passHref>
-              <div className="addCoursebtn mt-6 p-5 bg-cyan-900 rounded-full cursor-pointer">
+              <div className="addCoursebtn mt-10 p-3 bg-green-700 rounded-lg cursor-pointer shadow">
                 <p>Add Course</p>
               </div>
             </Link>
