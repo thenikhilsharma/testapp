@@ -163,12 +163,12 @@ const Subject = () => {
           <KeyboardBackspaceIcon />
         </button>
       </div>
-      <div className="attendance-box">
-        <div className="attendance-heading">
+      <div className="attendance-box shadow">
+        <div className="attendance-heading mt-1">
           <h2>attendance</h2>
         </div>
         <div className="attendance-content">
-          <div className="attendance-progress">
+          <div className="attendance-progress shadow">
             <p>
               {Math.floor(
                 (subject[0].presents / subject[0].totalClasses) * 100
@@ -183,7 +183,7 @@ const Subject = () => {
           </div>
         </div>
       </div>
-      <div className="miss-box">
+      <div className="miss-box shadow">
         <div className="miss-heading">
           {/* <h2>lectures left: 17</h2> */}
           <h2 style={{ color: attendance ? attendance.color : "white" }}>
@@ -192,7 +192,7 @@ const Subject = () => {
           </h2>
         </div>
       </div>
-      <div className="update-box miss-box">
+      <div className="update-box miss-box shadow">
         {/*===============================================*/}
 
           <div className="text-lg">
@@ -240,7 +240,7 @@ const Subject = () => {
 
           {/*===============================================*/}
       </div>
-      <div className="score-box">
+      <div className="score-box shadow">
         <div className="score-heading">
           <h2>scores (coming soon)</h2>
         </div>

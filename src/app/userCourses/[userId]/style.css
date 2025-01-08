@@ -48,3 +48,7 @@ font-size: 1.5rem;
   grid-column: span 1; /* Each takes up 1 column */
   justify-self: center; /* Center-align within the grid */
 }
+
+.shadow {
+  box-shadow: 2px, 2px, 5px, #000000;
+}
