@@ -20,6 +20,7 @@ const CourseHome = () => {
         // console.log("data: ", data);
         setCourses(await data.json());
       } catch (err) {
+        alert("Error Fetching Courses. Please Refresh this page")
         console.error("Error fetching courses: ", err);
       } finally {
         setLoading(false);
@@ -35,7 +36,7 @@ const CourseHome = () => {
       ) : (
         <div>
           <div className="course-title flex justify-center mt-8">
-            <h1>SEM 4 - Courses</h1>
+            <h1>All Courses</h1>
           </div>
           <div className="courses-container">
             <div className="courses-grid">

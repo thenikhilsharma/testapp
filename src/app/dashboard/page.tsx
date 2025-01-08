@@ -22,6 +22,7 @@ export default function Dashboard() {
       // console.log('Token:', token);
 
       if (!token) {
+        alert("Sign-In failed please try again")
         router.push('/signin'); // Redirect to sign-in if no token is found
         console.log('No token found');
       }
@@ -45,6 +46,7 @@ export default function Dashboard() {
         setUser(data.user);
       } catch (err) {
         console.error(err);
+        alert('SignIn verification failed. Please try again')
         setError('Token verification failed.');
         router.push('/signin'); // Redirect to sign-in if token verification fails
       }
